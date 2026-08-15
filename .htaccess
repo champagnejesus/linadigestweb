@@ -1,0 +1,16 @@
+# Hostinger Apache / LiteSpeed Configuration for Lina Digest Inventario
+DirectoryIndex index.html index.php server.js
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Allow direct access to existing files and directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Route SPA / dynamic routes to index.html if present in dist or root
+  RewriteCond %{DOCUMENT_ROOT}/dist/index.html -f
+  RewriteRule ^(.*)$ /dist/index.html [L]
+</IfModule>

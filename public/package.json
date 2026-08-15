@@ -1,0 +1,11 @@
+{
+  "name": "linadigest-inventario-public",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "node ../scripts/prepare-hostinger-public.mjs --clean",
+    "build": "cd .. && npm run build && node scripts/prepare-hostinger-public.mjs",
+    "start": "node dist/server.js"
+  }
+}
